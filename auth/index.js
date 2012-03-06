@@ -1,13 +1,14 @@
-
 var request = require('request'),
 	qs = require('querystring'),
-	oauth = {
-		callback: 'http://mysite.com/callback/',
-		consumer_key: 'key',
-		consumer_secret: 'secret'
-	},
-	url = 'http://echo.lab.madgex.com/request-token.ashx';
+	oauth_message = {
+		action: 'http://echo.lab.madgex.com/request-token.ashx',
+		parameters: {
+			consumer_key: 'key',
+			consumer_secret: 'secret'
+		}
+	};
+	
 
-request.get({url: url, oauth:oauth}, function(e, r, body){
-	console.log(e);
+request.post({ url: oauth_message.action, oauth:oauth_message.parameters }, function(e, r, body){
+	console.log(qs.parse(body));
 });

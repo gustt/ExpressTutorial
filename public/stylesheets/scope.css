@@ -1,0 +1,21 @@
+#main{
+	position: relative;
+	height: 510px;
+	width: 80%;
+	margin: 5% auto;
+}
+#topmenu{
+	float: right;
+}
+#topmenu li{
+	padding: 2mm 2mm 2mm 2mm;
+	width: 48px;
+	height: 48px;
+	float: left;
+}
+#topmenu #configuration{
+	background: url('/images/Configuration.png') no-repeat center center;
+}
+#topmenu #user{
+	background: url('/images/Alien.png') no-repeat center center;
+}

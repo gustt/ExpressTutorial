@@ -3,11 +3,14 @@
  * Module dependencies.
  */
 
-var express = require('express')
-  , routes	= require('./routes')
-  , auth	= require('./auth');
-
+var express = require('express');
 var app = module.exports = express.createServer();
+
+module.exports.config = require('./config');
+
+//Demais módulos
+var routes	= require('./routes')
+  , auth	= require('./auth');
 
 
 // Configuration

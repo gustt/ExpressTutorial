@@ -6,15 +6,11 @@
 var express = require('express');
 var app = module.exports = express.createServer();
 
-module.exports.config = require('./config');
-
 //Demais módulos
 var routes	= require('./routes')
-  , auth	= require('./auth');
-
+  , config 	= require('./config');
 
 // Configuration
-
 app.configure(function(){
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
@@ -35,7 +31,8 @@ app.configure('production', function(){
 
 // Routes
 app.get('/', routes.index);
-app.get('/oauth', routes.oauth);
+app.get('/oauth/flickr/start', routes.oauth_flickr_start);
+app.get('/oauth/flickr/callback', routes.oauth_flickr_callback);
 
 app.listen(3000);
-console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+console.log(new Date().toLocaleTimeString() + ' Express server listening on port %d in %s mode', app.address().port, app.settings.env);

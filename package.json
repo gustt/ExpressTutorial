@@ -1,5 +1,7 @@
 {
-    "name": "application-name"
+	"name":"tattoartt"
+  , "node":"0.6.12"
+  , "author":"gustt"
   , "version": "0.0.1"
   , "private": true
   , "dependencies": {

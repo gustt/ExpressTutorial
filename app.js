@@ -34,5 +34,5 @@ app.get('/', routes.index);
 app.get('/oauth/flickr/start', routes.oauth_flickr_start);
 app.get('/oauth/flickr/callback', routes.oauth_flickr_callback);
 
-app.listen(15513);
+app.listen(15706);
 console.log(new Date().toLocaleTimeString() + ' Express server listening on port %d in %s mode', app.address().port, app.settings.env);

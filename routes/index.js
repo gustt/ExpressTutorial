@@ -6,6 +6,7 @@ var config = require('../config');
 
 exports.index = function(req, res){
   res.render('index', { title: 'Express' });
+  res.end();
 };
 
 exports.oauth_flickr_start = function(req, res){

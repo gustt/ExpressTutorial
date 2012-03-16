@@ -2,7 +2,8 @@
 /*
  * GET home page.
  */
-var config = require('../config');
+var config		= require('../config'),
+	debug		= require('../extra/debug');
 
 exports.index = function(req, res){
   res.render('index', { title: 'Express' });
@@ -10,8 +11,7 @@ exports.index = function(req, res){
 };
 
 exports.oauth_flickr_start = function(req, res){
-	console.log(new Date().toLocaleTimeString() + ' route:oauth_flickr_start - Iniciado.');
-	console.log(require('../extra'));
+	debug.output('route:oauth_flickr_start - Iniciado.');
 	var flickr_auth = require('../extra').oAuth;
 	var qs = require('querystring');
 	var callback = function(params){

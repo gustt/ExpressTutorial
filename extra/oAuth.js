@@ -21,6 +21,7 @@
 var request			= require('request'),
 	qs				= require('querystring');
 	config			= require('../config').flickr;
+	debug			= require('./debug');
 
 var solitarRequestTokenDirecionarParaAutenticacao = function(callback){
 		
@@ -30,13 +31,13 @@ var solitarRequestTokenDirecionarParaAutenticacao = function(callback){
 			callback:				config.oauth_callback
 		}
 
-	console.log(new Date().toLocaleTimeString() + ' oAuth: flickrAutenticar() Start');
+	debug.output('oAuth: flickrAutenticar() Start');
 	
 	//Getting a request token
 	request.post({ url: config.oauth_action_request_token, oauth: oauth_parameters },
 		function(e, r, body){
 			var pars = qs.parse(body);
-			console.log(new Date().toLocaleTimeString() + ' oAuth: Getting a request token: Callback(){oauth_token:%s, oauth_token_secret:%s}',pars.oauth_token,pars.oauth_token_secret);
+			debug.output('oAuth: Getting a request token: Callback(){oauth_token:%s, oauth_token_secret:%s}',pars.oauth_token,pars.oauth_token_secret);
 			
 			oauth_parameters.token = pars.oauth_token;
 			oauth_parameters.token_secret = pars.oauth_token_secret;
@@ -50,7 +51,7 @@ var solicitarAccessToken = function(oauth_parameters){
 	request.post({ url: config.oauth_action_access_token, oauth: oauth_parameters },
 		function(e, r, body){
 			var pars = qs.parse(body);
-			console.log(new Date().toLocaleTimeString() + ' oAuth: Getting an access token: Callback(){oauth_token:%s, oauth_token_secret:%s}',pars.oauth_token,pars.oauth_token_secret);
+			debug.output('oAuth: Getting an access token: Callback(){oauth_token:%s, oauth_token_secret:%s}',pars.oauth_token,pars.oauth_token_secret);
 			oauth_parameters.token = pars.oauth_token;
 			oauth_parameters.token_secret = pars.oauth_token_secret;
 			oauth_parameters.method = config.method;

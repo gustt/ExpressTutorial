@@ -5,6 +5,7 @@
 
 var express = require('express');
 var app = module.exports = express.createServer();
+var debug = require('./extra/debug');
 
 //Demais módulos
 var routes	= require('./routes')
@@ -35,4 +36,4 @@ app.get('/oauth/flickr/start', routes.oauth_flickr_start);
 app.get('/oauth/flickr/callback', routes.oauth_flickr_callback);
 
 app.listen(15706);
-console.log(new Date().toLocaleTimeString() + ' Express server listening on port %d in %s mode', app.address().port, app.settings.env);
+debug.output('Express server listening on port %d in %s mode', app.address().port, app.settings.env);
